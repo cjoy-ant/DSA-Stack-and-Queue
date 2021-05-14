@@ -17,7 +17,9 @@ const main = () => {
   // look at the t op of the stack without removing it
   const peek = (stack) => {
     let top = stack.top;
-    console.log("top: " + top.data);
+    if (stack.top === null) {
+      return null
+    }
     return top.data;
   };
 
@@ -27,10 +29,8 @@ const main = () => {
   const isEmpty = (stack) => {
     let currNode = stack.top;
     if (currNode === null) {
-      console.log("is the stack empty: " + true);
       return true;
     }
-    console.log("is the stack empty: " + false);
     return false;
   };
 
@@ -48,18 +48,16 @@ const main = () => {
   display(stack); //starTrek
 
   // 3. Check for palindromes using a stack
-  const is_palindrome = (string) => {
-    string = string.toLowerCase().replace(/[^a-zA-Z0-9]/g, "");
+  const is_palindrome = (str) => {
+    str = str.toLowerCase().replace(/[^a-zA-Z0-9]/g, "");
     let reversed = new Stack();
-    for (let i = 0; i < string.length; i++) {
-      reversed.push(string.charAt(i));
+    for (let i = 0; i < str.length; i++) {
+      reversed.push(str.charAt(i));
     }
-    for (let j = 0; j < string.length; j++) {
-      if (string[j] === reversed.pop()) {
-        console.log("is palindrome: " + true);
+    for (let j = 0; j < str.length; j++) {
+      if (str[j] === reversed.pop()) {
         return true;
       }
-      console.log("is palindrome: " + false);
       return false;
     }
   };
@@ -70,7 +68,28 @@ const main = () => {
   console.log(is_palindrome("1001"));
   console.log(is_palindrome("Tauhida"));
 
-  // 4. atching parentheses in an expression
+  // 4. Matching parentheses in an expression
+  const hasParentheses = (str) => {
+    let stack = new Stack();
+    for (let i = 0; i < str.length; i++) {
+      if (str[i] === "(") {
+        stack.push(str[i]);
+      }
+      if (str[i] === ")") {
+        if (peek(stack) === '(') {
+          stack.pop();
+        }
+      }
+    }
+    if (stack.top === null) {
+      return true;
+    } else {
+      console.log(`missing a  + ')'`)
+      return false
+    }
+  };
+
+  console.log(hasParentheses("("));
 };
 
 module.exports = main;
