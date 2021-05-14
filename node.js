@@ -5,3 +5,5 @@ class _Node {
       this.next = next;
   }
 }
+
+module.exports = _Node

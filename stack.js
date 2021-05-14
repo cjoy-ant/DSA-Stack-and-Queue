@@ -1,37 +1,25 @@
-  /* LIFO (Last In First Out)
-  e.g., a stack of plates
-  the last plate added is on top
-  only the most recently added plate can be removed 
-  the last piece of data entered is the first element used for processing */
+const _Node = require('./node')
 
 class Stack {
-  constructor() {
-      this.top = null;
+  constructor () {
+    this.top = null;
   }
 
-
   push(data) {
-    /* If the stack is empty, then the node will be the
-       top of the stack */
     if (this.top === null) {
-        this.top = new _Node(data, null);
-        return this.top;
+      this.top = new _Node(data, null);
+      return this.top;
     }
 
-    /* If the stack already has something, 
-       then create a new node,
-       add data to the new node, and
-       have the pointer point to the top */
     const node = new _Node(data, this.top);
     this.top = node;
   }
 
-  pop() {    
-    /* In order to remove the top of the stack, you have to point
-      the pointer to the next item and that next item becomes the
-      top of the stack */
+  pop() {
     const node = this.top;
     this.top = node.next;
     return node.data;
   }
 }
+
+module.exports = Stack;
