@@ -1,7 +1,6 @@
 const Stack = require("./stack");
-const Queue = require("./queue");
 
-const main = () => {
+const stackDrills = () => {
   // 1. Create a stack class
   const stack = new Stack();
 
@@ -18,7 +17,7 @@ const main = () => {
   const peek = (stack) => {
     let top = stack.top;
     if (stack.top === null) {
-      return null
+      return null;
     }
     return top.data;
   };
@@ -76,7 +75,7 @@ const main = () => {
         stack.push(str[i]);
       }
       if (str[i] === ")") {
-        if (peek(stack) === '(') {
+        if (peek(stack) === "(") {
           stack.pop();
         }
       }
@@ -84,12 +83,65 @@ const main = () => {
     if (stack.top === null) {
       return true;
     } else {
-      console.log(`missing a  + ')'`)
-      return false
+      console.log(`missing a  + ')'`);
+      return false;
     }
   };
 
   console.log(hasParentheses("("));
+
+  // 5. Sort stack
+  // const sort = (input, tempStack=null, temp) => {
+  //   if (tempStack === null) {
+  //     tempStack = new Stack();
+  //   }
+  //   if (input.top === null) {
+  //     input = tempStack;
+  //     return input;
+  //   }
+  //   temp = input.pop();
+  //   if (tempStack.top === null || temp < tempStack.top.data) {
+  //     return sort(input, tempStack);
+  //   } else {
+  //     while (tempStack.top !== null && temp > tempStack.top.top) {
+  //       input.push(tempStack.pop());
+  //     }
+  //     tempStack.push(temp);
+  //     return sort(input, tempStack);
+  //   }
+  // };
+
+  // like tower of Hanoi
+  // // const sort = (input, ouput=null, temp=null) => {
+  // //   if (output === null) {
+  // //     output = new Stack()
+  // //   }
+  // //   if (temp === null) {
+  // //     temp = new Stack()
+  // //   }
+  // //   let counter = 0
+  // //   let currNode = input.top
+  // //   while (currNode !== null) {
+  // //     counter ++
+  // //     currNode = currNode.next
+  // //   }
+  // //   for (let i=0; i < counter; i++) {
+  // //     let node = input.top
+  // //     if (node > node.next) {
+
+  // //     }
+  // //   }
+  // // };
+
+  // let testStack = new Stack();
+  // let output = null;
+  // let temp = null;
+  // testStack.push(10);
+  // testStack.push(100);
+  // testStack.push(1);
+  // testStack.push(1000);
+  // console.log(sort(testStack, output, temp));
+  // UNFINISHED
 };
 
-module.exports = main;
+module.exports = stackDrills;
