@@ -2,14 +2,13 @@ const Stack = require("./stack");
 
 const stackDrills = () => {
   // 1. Create a stack class
-  const stack = new Stack();
+  const starTrek = new Stack();
 
-  stack.push("starTrek");
-  stack.push("Kirk");
-  stack.push("Spock");
-  stack.push("McCoy");
-  stack.push("Scotty");
-  console.log(stack);
+  starTrek.push("Kirk");
+  starTrek.push("Spock");
+  starTrek.push("McCoy");
+  starTrek.push("Scotty");
+  console.log(starTrek);
 
   // 2. Useful methods for a stack
 
@@ -22,7 +21,7 @@ const stackDrills = () => {
     return top.data;
   };
 
-  peek(stack);
+  console.log("top: " + peek(starTrek));
 
   // check if the stack is empty or not
   const isEmpty = (stack) => {
@@ -33,10 +32,11 @@ const stackDrills = () => {
     return false;
   };
 
-  isEmpty(stack);
+  console.log("isEmpty: " + isEmpty(starTrek));
 
   // display the stack - what is the first item in the stack?
   const display = (stack) => {
+    console.log("display:")
     let currNode = stack.top;
     while (currNode !== null) {
       console.log(currNode.data);
@@ -44,7 +44,7 @@ const stackDrills = () => {
     }
   };
 
-  display(stack); //starTrek
+  display(starTrek); //starTrek
 
   // 3. Check for palindromes using a stack
   const is_palindrome = (str) => {
