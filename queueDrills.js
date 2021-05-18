@@ -4,7 +4,6 @@ const queueDrills = () => {
   const starTrekQ = new Queue();
 
   // 6. Create a queue using singly linked list
-  // 7. Create a queue class using doubly linked likest
 
   starTrekQ.enqueue("Kirk");
   starTrekQ.enqueue("Spock");
@@ -50,6 +49,8 @@ const queueDrills = () => {
 
   display(starTrekQ);
 
+  // 7. Create a queue class using doubly linked list
+
   // 8. Queue implementation using a stack
 
   // 9. Square dance pairing
@@ -62,20 +63,20 @@ const queueDrills = () => {
   }
 
   function counter(q) {
-    let counter = 0
-    let current = q.first
+    let counter = 0;
+    let current = q.first;
     while (current.next) {
-      counter ++
-      current = current.next
+      counter++;
+      current = current.next;
     }
-    console.log("# people in in line at start: " + counter)
-    return counter
+    console.log("# people in in line at start: " + counter);
+    return counter;
   }
 
   const ophidianBank = (q) => {
     let paperwork = 0;
     // counts the number of people in line
-    let customers = counter(q)
+    let customers = counter(q);
     // we will look through the line of customers once
     for (let i = 0; i < customers; i++) {
       // 1 out of 4 (25%) probability paperwork isn't quite right
@@ -107,6 +108,27 @@ const queueDrills = () => {
   };
 
   console.log(ophidianBank(starTrekQ));
+
+  // SOLUTION
+  // function ophidianBank() { 
+  //   const queue = new Queue(); // Assumption: New people join the queue at the same rate they are seen
+
+  //   for (var i=0; i<100; i++) {
+  //     console.log('Person joined line');
+  //     queue.enqueue({
+  //       angriness: 0 // JUST FOR FUN -- How fed up the person is with doing their paperwork
+  //     });
+
+  //   const person = queue.dequeue(); // returns the value of the person removed
+  //   if (Math.random() < 0.25) {
+  //       console.log(`Person with angriness ${person.angriness} sent to the back`);
+  //       person.angriness++; // JUST FOR FUN
+  //       queue.enqueue(person); // they get back in line
+  //   }
+  //   else {
+  //       console.log(`Person with angriness ${person.angriness} processed`);
+  //   }
+  // }
 };
 
 module.exports = queueDrills;
